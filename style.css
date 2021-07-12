@@ -1,9 +1,16 @@
 body {
   background-color: darkblue;
   max-width: 100%;
-  color:white;
+  color: white;
   font-family: sans-serif;
 }
+
 h1 {
   text-align: center;
+}
+
+#breakout {
+  background-color: darkslateblue;
+  display: block;
+  margin: 0 auto;
 }
