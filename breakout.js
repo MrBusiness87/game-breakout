@@ -33,5 +33,7 @@ function draw() {
   ctx.fillStyle = "turquoise";
   ctx.fill();
   ctx.closePath();
+  x += dx;
+  y += dy;
 }
 setInterval(draw, 10);
