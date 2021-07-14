@@ -28,6 +28,7 @@ ctx.closePath();
 
 function draw() {
   // drawing code
+  ctx.clearRect(0, 0, breakout.width, breakout.height)
   ctx.beginPath();
   ctx.arc(x, y, 10, 0, Math.PI*2);
   ctx.fillStyle = "turquoise";
