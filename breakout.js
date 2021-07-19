@@ -8,6 +8,8 @@ var ballSize = 10;
 var padHeight = 10;
 var padWidth = 75;
 var padX = (breakout.width-padWidth) / 2;
+var right = false;
+var left = false;
 
 // // darkgreen square
 // game.beginPath();
@@ -30,7 +32,7 @@ var padX = (breakout.width-padWidth) / 2;
 // game.stroke();
 // game.closePath();
 
-// draws the element
+// draws the ball
 function ball() {
   game.beginPath();
   game.arc(x, y, ballSize, 0, Math.PI*2);
@@ -39,8 +41,16 @@ function ball() {
   game.closePath();
 }
 
+// draws the pad
+function pad() {
+  game.beginPath();
+  game.rect(padX, breakout.height-padHeight, padWidth, padHeight);
+  game.fillStyle = "gold";
+  game.fill();
+  game.closePath();
+}
 // drawing code
-function drawBall() {
+function draw() {
   // clears the frame
   game.clearRect(0, 0, breakout.width, breakout.height);
   ball();
@@ -55,12 +65,27 @@ function drawBall() {
   y += dy;
 }
 
-setInterval(drawBall, 10);
+// moving the pad using directional buttons
+document.addEventListener("keydown", downHandle, false);
+document.addEventListener("keyup", upHandle, false);
 
-function drawPad() {
-  game.beginPath();
-  game.rect(padX, breakout.height-padHeight, padWidth, padHeight);
-  game.fillStyle = "gold";
-  game.fill();
-  game.closePath();
+//pressed keys action
+function downHandle(e) {
+  if(e.key == "Right" || e.key == "arrowR") {
+    right = true;
+  }
+  else if(e.key == "Left" || e.key == "arrowL") {
+    left = true;
+  }
 }
+
+//released keys action
+function upHandle(e) {
+  if(e.key == "Right" || e.key == "arrowR") {
+    right = false;
+  }
+  else if(e.key == "Left" || e.key == "arrowL") {
+    left = false;
+  }
+}
+setInterval(draw, 10);
