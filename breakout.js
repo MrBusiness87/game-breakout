@@ -5,6 +5,9 @@ var y = breakout.height-30;
 var dx = 2;
 var dy = -2;
 var ballSize = 10;
+var padHeight = 10;
+var padWidth = 75;
+var padX = (breakout.width-padWidth) / 2;
 
 // // darkgreen square
 // game.beginPath();
@@ -37,12 +40,27 @@ function ball() {
 }
 
 // drawing code
-function draw() {
+function drawBall() {
   // clears the frame
-  game.clearRect(0, 0, breakout.width, breakout.height)
+  game.clearRect(0, 0, breakout.width, breakout.height);
   ball();
+  //bouncing off walls
+  if(x + dx < breakout.width-ballSize || x + dx < ballSize) {
+    dx = -dx;
+  }
+  if(y + dy < breakout.height-ballSize || y + dy < ballSize) {
+    dy = -dy;
+  }
   x += dx;
   y += dy;
 }
 
-setInterval(draw, 10);
+setInterval(drawBall, 10);
+
+function drawPad() {
+  game.beginPath();
+  game.rect(padX, breakout.height-padHeight, padWidth, padHeight);
+  game.fillStyle = "gold";
+  game.fill();
+  game.closePath();
+}
