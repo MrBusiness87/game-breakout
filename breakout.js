@@ -4,6 +4,7 @@ var x = breakout.width/2;
 var y = breakout.height-30;
 var dx = 2;
 var dy = -2;
+var ballSize = 10;
 
 // // darkgreen square
 // game.beginPath();
@@ -29,7 +30,7 @@ var dy = -2;
 // draws the element
 function ball() {
   game.beginPath();
-  game.arc(x, y, 10, 0, Math.PI*2);
+  game.arc(x, y, ballSize, 0, Math.PI*2);
   game.fillStyle = "turquoise";
   game.fill();
   game.closePath();
