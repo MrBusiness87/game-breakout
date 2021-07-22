@@ -78,13 +78,22 @@ function draw() {
   // clears the frame
   game.clearRect(0, 0, breakout.width, breakout.height);
   ball();
-  //bouncing off walls
+  //bouncing off 3 walls 4th wall ends game
   if(x + dx > breakout.width-ballSize || x + dx < ballSize) {
     dx = -dx;
   }
-  if(y + dy > breakout.height-ballSize || y + dy < ballSize) {
+  if(y + dy < ballSize) {
     dy = -dy;
+  } else if(y + dy > breakout.height-ballSize) {
+    if(x > padX && x < padX + padW) {
+      dy = -dy;
+    }
+    else {
+    alert("!GAME OVER!");
+    document.location.reload();
+    clearInterval(interval);
   }
+}
   x += dx;
   y += dy;
 
@@ -104,4 +113,4 @@ function draw() {
   }
 }
 
-setInterval(draw, 10);
+var interval = setInterval(draw, 10);
