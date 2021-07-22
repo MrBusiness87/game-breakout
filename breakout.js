@@ -11,6 +11,30 @@ var padX = (breakout.width-padW) / 2;
 var right = false;
 var left = false;
 
+// moving the pad using directional buttons
+document.addEventListener("keydown", downHandle, false);
+document.addEventListener("keyup", upHandle, false);
+
+//pressed keys action
+function downHandle(e) {
+  if(e.key == "Right" || e.key == "ArrowRight") {
+    right = true;
+  }
+  else if(e.key == "Left" || e.key == "ArrowLeft") {
+    left = true;
+  }
+}
+
+//released keys action
+function upHandle(e) {
+  if(e.key == "Right" || e.key == "ArrowRight") {
+    right = false;
+  }
+  else if(e.key == "Left" || e.key == "ArrowLeft") {
+    left = false;
+  }
+}
+
 // // darkgreen square
 // game.beginPath();
 // game.rect(20,40,50,50);
@@ -63,36 +87,21 @@ function draw() {
   }
   x += dx;
   y += dy;
+
+  pad();
   //paddle movement
   if(right) {
     padX +=7;
+    if (padX + padW > breakout.width){
+      padX = breakout.width - padW;
+    }
   }
   else if(left) {
     padX -= 7;
+    if (padX < 0){
+      padX = 0;
+    }
   }
 }
 
-// moving the pad using directional buttons
-document.addEventListener("keydown", downHandle, false);
-document.addEventListener("keyup", upHandle, false);
-
-//pressed keys action
-function downHandle(e) {
-  if(e.key == "Right" || e.key == "arrowR") {
-    right = true;
-  }
-  else if(e.key == "Left" || e.key == "arrowL") {
-    left = true;
-  }
-}
-
-//released keys action
-function upHandle(e) {
-  if(e.key == "Right" || e.key == "arrowR") {
-    right = false;
-  }
-  else if(e.key == "Left" || e.key == "arrowL") {
-    left = false;
-  }
-}
 setInterval(draw, 10);
