@@ -63,6 +63,13 @@ function draw() {
   }
   x += dx;
   y += dy;
+  //paddle movement
+  if(right) {
+    padX +=7;
+  }
+  else if(left) {
+    padX -= 7;
+  }
 }
 
 // moving the pad using directional buttons
