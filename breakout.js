@@ -5,9 +5,9 @@ var y = breakout.height-30;
 var dx = 2;
 var dy = -2;
 var ballSize = 10;
-var padHeight = 10;
-var padWidth = 75;
-var padX = (breakout.width-padWidth) / 2;
+var padH = 10;
+var padW = 75;
+var padX = (breakout.width-padW) / 2;
 var right = false;
 var left = false;
 
@@ -44,7 +44,7 @@ function ball() {
 // draws the pad
 function pad() {
   game.beginPath();
-  game.rect(padX, breakout.height-padHeight, padWidth, padHeight);
+  game.rect(padX, breakout.height-padH, padW, padH);
   game.fillStyle = "gold";
   game.fill();
   game.closePath();
