@@ -55,10 +55,10 @@ function draw() {
   game.clearRect(0, 0, breakout.width, breakout.height);
   ball();
   //bouncing off walls
-  if(x + dx < breakout.width-ballSize || x + dx < ballSize) {
+  if(x + dx > breakout.width-ballSize || x + dx < ballSize) {
     dx = -dx;
   }
-  if(y + dy < breakout.height-ballSize || y + dy < ballSize) {
+  if(y + dy > breakout.height-ballSize || y + dy < ballSize) {
     dy = -dy;
   }
   x += dx;
