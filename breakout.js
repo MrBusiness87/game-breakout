@@ -1,3 +1,4 @@
+//game operation variables
 var breakout = document.getElementById("breakout");
 var game = breakout.getContext("2d");
 var x = breakout.width/2;
@@ -10,6 +11,15 @@ var padW = 75;
 var padX = (breakout.width-padW) / 2;
 var right = false;
 var left = false;
+
+//brick variables
+var brickRow = 3;
+var brickColumn = 5;
+var brickWidth = 75;
+var brickHeight = 20;
+var brickPadding = 10;
+var brickOffsetTop = 30;
+var brickOffsetLeft = 30;
 
 // moving the pad using directional buttons
 document.addEventListener("keydown", downHandle, false);
