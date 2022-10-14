@@ -10,6 +10,7 @@ h1 {
 }
 
 #breakout {
+  border: 20%, dashed, white;
   background-color: darkslateblue;
   display: block;
   margin: 0 auto;
